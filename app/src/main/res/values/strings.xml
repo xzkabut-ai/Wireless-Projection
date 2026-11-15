@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Wireless Projection</string>
+    <string name="tv_icon_description">Television</string>
+    <string name="connection_disconnected">Disconnected</string>
+    <string name="connection_status_explanation">Open Android's Wireless Display or Cast screen to choose a supported TV. This app never reports a connection it cannot verify.</string>
+    <string name="wireless_display_available">A system Cast or Wireless Display settings screen is available. Actual wireless display support depends on your phone and TV.</string>
+    <string name="wireless_display_unavailable">No system Wireless Display settings screen was found. Your device may not support this feature.</string>
+    <string name="wireless_display_settings_unavailable">Could not open Wireless Display settings. Try Settings and look for Cast or Wireless Display.</string>
+    <string name="system_settings_unavailable">System Settings could not be opened on this device.</string>
+    <string name="connect_tv">CONNECT TV</string>
+    <string name="settings">Settings</string>
+    <string name="local_connection_note">Uses Android system features. No account, server, or internet connection is required.</string>
+</resources>
