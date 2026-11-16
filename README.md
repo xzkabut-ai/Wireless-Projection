@@ -1,28 +1,32 @@
 # Wireless Projection
 
-A lightweight Android app that opens the device's native Cast or Wireless Display settings. Wireless display support and connection status are controlled by Android and vary by phone and TV. The app does not simulate a connection.
+Wireless Projection is a native Android app built with Kotlin, Jetpack Compose, and Material 3. Its dark navy and blue home screen opens the phone's Cast or Wireless Display settings, shows presentation displays reported by Android, and includes About, Version, Help, and Privacy pages.
 
 ## Requirements
 
 - JDK 17
-- Android SDK Platform 35 (installed automatically by the GitHub Actions workflow)
-- Android Gradle Plugin 8.7.3 / Gradle 8.9
-- Minimum Android version: API 26
+- Android SDK Platform 35
+- Android Gradle Plugin 8.7.3 and Gradle 8.9
+- Android 8.0 (API 26) or newer
 
-## Build locally
+## Build
 
-Run the Gradle wrapper from the repository root:
+From the repository root:
 
 ```shell
 ./gradlew assembleDebug
 ```
 
-On Windows, use `gradlew.bat assembleDebug`. The debug APK is written to `app/build/outputs/apk/debug/`.
+On Windows, run `gradlew.bat assembleDebug`. The debug APK is written to `app/build/outputs/apk/debug/`.
 
-## GitHub Actions APKs
+## GitHub Actions
 
-The workflow runs on pushes and pull requests targeting `main`, and can also be started with **Actions > Android Build > Run workflow**. It builds both debug and release APKs and uploads them as separate workflow artifacts. Download an APK from the completed workflow run's **Artifacts** section. The release APK is unsigned; install the debug APK for testing or configure signing before distributing a release.
+The workflow builds Debug and Release APKs on pushes and pull requests targeting `main`, and supports manual runs through **Actions > Wireless Projection Android Build > Run workflow**. Android SDK Platform 35 and Build Tools are installed in the workflow. Both APKs are uploaded as separate artifacts on a successful run. Download them from that run's **Artifacts** section. The Release APK is unsigned.
 
-## Device behavior
+## Device behavior and limitations
 
-Press **CONNECT TV** to open Android's Wireless Display or Cast settings, when provided by the device. Use **Settings** to open system settings directly. Android does not expose a reliable public API for this app to confirm a wireless display connection across devices, so the app does not claim that a connection succeeded. Miracast and related features are not supported on every Android phone or television.
+- **Connect to TV** opens Android's Cast or Wireless Display settings when the device provides a matching system activity. The system handles discovery and connection.
+- The app lists presentation displays reported by Android's public `DisplayManager` API. A reported display can be wired or wireless; Android does not expose the connection type consistently.
+- Android does not provide a universal public API for third-party apps to scan and list nearby Miracast/Wireless Display receivers. If no external display is reported, the app directs users to system settings rather than showing fabricated devices.
+- Connection status is based on the presentation displays currently reported by Android. Wireless display support varies by phone and TV.
+- The app does not request special permissions and does not use a server, account, database, or internet access.
